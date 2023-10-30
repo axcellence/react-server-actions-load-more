@@ -17,13 +17,12 @@ export async function PokemonList({
     .then((res) => res.map((pokemon: { name: string }) => pokemon.name));
 
   return (
-    <div className="">
-      <ul>
-        {pokemon.map((pokemon: string) => (
-          <li key={pokemon}>{pokemon}</li>
-        ))}
-      </ul>
+    <>
+      {pokemon.map((pokemon: string) => (
+        <li key={pokemon}>{pokemon}</li>
+      ))}
+
       <LoadMore serverAction={serverAction} offset={offset} />
-    </div>
+    </>
   );
 }

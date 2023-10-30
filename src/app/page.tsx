@@ -10,7 +10,9 @@ export default function Home() {
     <main className="p-8">
       <h1 className="text-4xl font-bold">Pokémon List</h1>
       <form>
-        <PokemonList serverAction={loadMore} />
+        <ul>
+          <PokemonList serverAction={loadMore} />
+        </ul>
       </form>
     </main>
   );
