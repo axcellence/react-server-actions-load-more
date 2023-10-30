@@ -1,8 +1,7 @@
 import { PokemonList } from "./pokemon-list";
 
-async function loadMore(offset = 0) {
+async function loadMore(offset?: number) {
   "use server";
-  console.log("loadMore", offset);
   return <PokemonList serverAction={loadMore} offset={offset} limit={10} />;
 }
 

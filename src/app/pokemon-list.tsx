@@ -14,12 +14,12 @@ export async function PokemonList({
   )
     .then((res) => res.json())
     .then((res) => res.results)
-    .then((res) => res.map((pokemon) => pokemon.name));
+    .then((res) => res.map((pokemon: { name: string }) => pokemon.name));
 
   return (
     <div className="">
       <ul>
-        {pokemon.map((pokemon) => (
+        {pokemon.map((pokemon: string) => (
           <li key={pokemon}>{pokemon}</li>
         ))}
       </ul>

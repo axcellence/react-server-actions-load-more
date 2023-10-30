@@ -6,8 +6,9 @@ export function LoadMore({
   offset = 0,
 }: {
   serverAction: () => Promise<React.JSX.Element>;
-  offset?: number;
+  offset: number;
 }) {
+  // @ts-expect-error
   const serverActionWithOffset = serverAction.bind(null, offset + 10);
   const [node, formAction] = useFormState(serverActionWithOffset, null);
   const { pending } = useFormStatus();
@@ -17,12 +18,15 @@ export function LoadMore({
       {node ? (
         node
       ) : (
-        <button
-          formAction={formAction}
-          className="my-4 px-2 py-1 rounded-md shadow-sm border"
-        >
-          {pending ? "Loading..." : "Load More"}
-        </button>
+        <>
+          <button
+            formAction={formAction}
+            className="my-4 px-2 py-1 rounded-md shadow-sm border"
+          >
+            {pending ? "Loading..." : "Load More"}
+          </button>
+          <input type="hidden" name="offset" value={offset + 10} />
+        </>
       )}
     </>
   );
